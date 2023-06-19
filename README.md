@@ -49,3 +49,44 @@ Abre pelo navegador.
 Abre direto na CLI do git.
   
 ##  Seção 2 - Iniciando com Git
+
+Primeiro commit. Após criar um rep vazio;
+
+```$echo "hello world" >hello.txt```
+
+echo não é comando do git e sim do SO.
+
+```$ls ``` to list the files.
+
+```$cat hello.txt``` to read txt content.
+
+Agora precisamos enviar os arquivos para a area de **staging**.
+
+```$git add hello.txt```
+
+Ou posso usar ```$git add . ``` para adicionar TODOS os arquivos que estão ali.
+
+Em seguida vamos fazer o commit, e adicionar (obrigatóriamente) um comentário ```-m "comentário"``` para aquele commit.
+```$git commit -m "Creating hello.txt```
+
+Para visualizar as alterações basta usar o comando ```$git show```.
+
+Agora para enviar as alterações para o repositório remoto.
+
+```$git push```
+
+A branch local master ainda não possui uma branch de **rastreamento**.
+
+```$git push --set-upstream origin master```
+
+Ou eu posso substituir ```--set-upstream``` por ```-u```. Os próximos commits poderão ser realizados somente com ```git push```.
+
+Se atualizar o site do github, os arquivos devem então aparecer ali.
+
+O git id é o nome de um objeto git (40 caracteres). ```git hist``` o hash (SHA-1) dele em 7 caracteres.
+
+No git, os conteúdos dos arquivos são armazenados em objetos chamados **blobs**. Blob não tem metadados.
+
+Usamos -t ```$git cat-file -t <hash do primeiro commit>``` para mostrar o tipo de objeto. E -p para imprimir o conteúdo com base no seu tipo ```$git cat-file -p <hash do primeiro commit>```.
+
+
