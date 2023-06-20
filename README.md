@@ -87,6 +87,19 @@ O git id é o nome de um objeto git (40 caracteres). ```git hist``` o hash (SHA-
 
 No git, os conteúdos dos arquivos são armazenados em objetos chamados **blobs**. Blob não tem metadados.
 
-Usamos -t ```$git cat-file -t <hash do primeiro commit>``` para mostrar o tipo de objeto. E -p para imprimir o conteúdo com base no seu tipo ```$git cat-file -p <hash do primeiro commit>```.
+Usamos -t ```$git cat-file -t <hash do primeiro commit>``` para mostrar o tipo de objeto. E -p para imprimir o conteúdo com base no seu tipo ```$git cat-file -p <hash do primeiro commit>```. O mesmo para blob, e os comandos: ```$git cat-file -t <hash do blob>``` e ```$git cat-file -p <hash do blob>```.
 
+Quando entra uma nova pessoa no projeto, um clone precisa ser criado.
+Internamente, o ```git clone``` excecuta um ```git init``` e ```git fetch```.
 
+```git status``` mostra o status do rep. Se está tudo okay ou se tem arquivo em staging que precisa ser commitado.
+Ele mostra também se o arquivo ainda não foi adicionado.
+
+Se editar o arquivo (quando ja no staging), precisa dar um ```git add``` novamente senão o arquivo será perdido.
+```git push``` para enviar ao repositório remoto. 
+
+Untracked -> ```git add``` -> Staged -> ```git commit``` & ```git push```-> Unmodified -> modified -> loop entre os 3 últimos.
+
+Untracked = não rastreado pelo git, não versionado.
+
+## Seção 3 - Referências no Git
