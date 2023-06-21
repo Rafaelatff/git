@@ -104,10 +104,12 @@ Untracked = não rastreado pelo git, não versionado.
 
 ## Seção 3 - Referências no Git
 
+### Criando e alternando entre branchs
+
 HEAD - é a versão que estamos trabalhando (master, branch). Para visualizar basta: 
 ```$cat. git/head```.
 
-CHECKOUT utilizado para alternar branchs. 
+CHECKOUT utilizado para criar e alternar branchs. 
 * ```git checkout [<referência> | <commit>]```
 * ```git branch <nome da nova branch>``` apenas cria uma nova branch
 * ```git branch -c <nome da branch específica> <nome da nova branch>``` para criar a branch a partir de uma outra branch
@@ -121,4 +123,30 @@ Branch recém criada ainda não possuí rastreamento. Se dermos git commit e git
 Usar novamente o comando ```git push -u origin <branch name>```. Conferir usando ```git branch -a```, a branch deve aparecer em vermelho. 
 Isso precisa ser feito porque, assim como podemos ter mais de uma cópia dos arquivos em repositórios locais, podemos ter também os mesmos arquivos em mais de um repositório remoto.
 Para conferir qual o repositório remoto, usar: ```git remote get-url origin```.
+
+Corrigir nome de branch em rep local:
+* ```$git branch -m "banner"``` para mudar nome da branch atual.
+* ```$git branch -m "<nome antigo>" "<nome novo>"``` para alterar o nome de outra branch.
+
+Corrigir nome de branch rem rep remoto:
+* ```$git push origin :baner``` para deletar a branch com nome errado, ou
+* ```$git push origin --delete baner```, e então:
+* ```$git push -u origin banner``` para criar a nova com nome correto.
+
+### Tags
+
+Usada para colocar versão de projeto.
+* Tag leve: ```$git tag todo-primeiro-acesso``` pouco usada por não adicionar info de projeto. Usada para uso privado ou temporário.
+* Tag anotadas: usando -a adiciona informações de quem criou, quando criou e uma mensagem de anotação.
+* ```$git tag -a "v1.0" -m "first version"``` para criar tag.
+* ```$git show v1.0``` para mostrar referência da tag.
+* ```$git tag -d todo-primeiro-acesso``` para deletar tag.
+
+Tag está apenas no rep local, para enviar a tag para o repositório remoto, git push não é suficiente.
+Precisa utilizar o comando ```$git push --tags```.
+
+Para que o *push* envie commits e tags simultaneamente, precisamos adicionar para o arquivo de configuração git a propriedade *push.followTags* com valor de *true*.
+* ```git config --local push.followTags true``` adiciona em rep local
+* ```git config --global push.followTags true``` adiciona em todos os rep do usuário corrente do SO
+* ```git config --system push.followTags true``` adiciona para todos os usuários do SO
 
