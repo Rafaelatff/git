@@ -150,3 +150,6 @@ Para que o *push* envie commits e tags simultaneamente, precisamos adicionar par
 * ```git config --global push.followTags true``` adiciona em todos os rep do usuário corrente do SO
 * ```git config --system push.followTags true``` adiciona para todos os usuários do SO
 
+Para mais info consultar post do [professor](https://dev.to/rsantanarj/entenda-conceitos-basicos-sobre-git-d2f).
+
+## Seção 4 - Descartando alterações
