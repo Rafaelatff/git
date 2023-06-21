@@ -103,3 +103,22 @@ Untracked -> ```git add``` -> Staged -> ```git commit``` & ```git push```-> Unmo
 Untracked = não rastreado pelo git, não versionado.
 
 ## Seção 3 - Referências no Git
+
+HEAD - é a versão que estamos trabalhando (master, branch). Para visualizar basta: 
+```$cat. git/head```.
+
+CHECKOUT utilizado para alternar branchs. 
+* ```git checkout [<referência> | <commit>]```
+* ```git branch <nome da nova branch>``` apenas cria uma nova branch
+* ```git branch -c <nome da branch específica> <nome da nova branch>``` para criar a branch a partir de uma outra branch
+* ```git checkout -b <new branch>``` onde cria uma nova branch e alterna para a mesma.
+* ou ```git checkout <branch>~1``` para alternar para o penúltimo commit da branch em questão.
+
+Para listar todas as nossas branchs (locais em branco e de rastreamento em vermelho), usar o camndo:
+```git branch -a```. Opção com asterisco é nossa branch corrente.
+
+Branch recém criada ainda não possuí rastreamento. Se dermos git commit e git push será retornado uma mensagem de erro.
+Usar novamente o comando ```git push -u origin <branch name>```. Conferir usando ```git branch -a```, a branch deve aparecer em vermelho. 
+Isso precisa ser feito porque, assim como podemos ter mais de uma cópia dos arquivos em repositórios locais, podemos ter também os mesmos arquivos em mais de um repositório remoto.
+Para conferir qual o repositório remoto, usar: ```git remote get-url origin```.
+
