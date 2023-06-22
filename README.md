@@ -153,3 +153,20 @@ Para que o *push* envie commits e tags simultaneamente, precisamos adicionar par
 Para mais info consultar post do [professor](https://dev.to/rsantanarj/entenda-conceitos-basicos-sobre-git-d2f).
 
 ## Seção 4 - Descartando alterações
+
+* ```git restore <nome do arquivo.extensão>``` para descartar alterações locais.
+* ```git clean <nome do arquivo.extensão>``` descarta alterações nunca comitadas antes.
+* ```git clean -f``` deleta todos os arquivos não rastreado
+* ```git clean -n``` mostra primeiro os arquivos que serão apagados.
+* ```git restore --staged``` descarta alterações do stage.
+* ```git restore --source <hash do commit> <nome do arquivo>``` restalra versões anteriores em um arquivo.
+* ```git revert HEAD --no-edit``` desfaz ultimo commit (antes de push no ex)
+* ```git revert HEAD~1``` reverte penúltimo commit.
+* ```git reset --soft head~``` preserva area de stage e de trabalho, mas voltando o commit.
+* ```git reset --mixed head~``` preserva area de trabalho mas não de stagin.
+* ```git reset --hard head~``` nem arquivos na area de trabalho e nem stagin.
+* ```git reflog``` Recupera o histórico do projeto e recupera quase tudo. Usando dai ```git checkout <commit_hash>``` é possível recuperar um commit específico e em seguida ```dir``` é possível visualizar o arquivo no diretório. Pode aparecer mensagem de erro depois por a HEAD deixar de apontar para a branch atual, caracterizando um detached HEAD. Para resovler, é possível criar uma branch temporária ```git branch branch-temp```, seguido de um ```git checkout master``` e seguido de um ```git merge branch-temp```, que deve trazer as alterações da branch-temp para a master. E por fim, deletamos a branch temporária ```git branch -d branch-temp```.
+
+**Reset** remove o commit e não deixa rastros no histórico. **Revert** gera um novo commit que desfaz o commit selecionado.
+
+## Seção 5 - Merges, DAG e Conflitos
