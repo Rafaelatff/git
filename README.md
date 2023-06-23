@@ -170,3 +170,39 @@ Para mais info consultar post do [professor](https://dev.to/rsantanarj/entenda-c
 **Reset** remove o commit e não deixa rastros no histórico. **Revert** gera um novo commit que desfaz o commit selecionado.
 
 ## Seção 5 - Merges, DAG e Conflitos
+
+### Merge e Rebase
+
+#### Merge fast-forward (avanço rápido)
+
+* 1. Criar branch e alternar pra ela ```$git checkout -b icone```.
+* 2. Criar arquivo icone.txt ```$touch icone.txt```.
+* 3. Enviar arquivo pro stage ```$git add icone.txt```.
+* 4. Comitar o arquivo ```$git commit -m "adding icon"```.
+* 5. Vamos checar a branch icone ```$git hist```.
+* 6. E alternar para a master e checar também ```$git checkout master```  e ```$git hist```. A branch do icone deverá estar a um commit na frente da master.
+* 7. Para mergear usamos ```$git merge icone```. Podemos checar a mudança na master novamente usando o ```$git hist```.
+
+Para visualizar a o histórico de uma branch, mesmo que não seja a branch corrente, podemos utilizar ```git log <nome da branch>``` ou  mesmo  ```git hist <nome da branch>```.
+
+#### Merge Three-Way (recursiva)
+
+* 1. Criar branch e alternar pra ela ```$git checkout -b menu```.
+* 2. Criar arquivo menu.txt ```$touch menu.txt```.
+* 3. Enviar arquivo pro stage ```$git add menu.txt```.
+* 4. Comitar o arquivo ```$git commit -m "adding menu"```.
+* 6. E alternar para a master ```$git checkout master```.
+
+Agora antes de realizar o merde, vamos editar o icone.txt (enviado no exemplo anterior para a master), gerando um novo commit na master.
+
+* 7. ```$echo "icone" > icone.txt```, ```$git add icone.txt``` e ```$git commit -m "changes in icone.txt"```.
+* 8. Fazemos então o merge com a branch menu ```$git merge menu```.
+
+Neste momento, o git irá exibir o editor de texto padrão para que seja inserido uma mensagem de commit. Manteremos a mensagem padrão. Nesse momento o git usou da estratégia recursiva, uma vez que não consegue apenas mudar o ponteiro do HEAD. Neste caso, é preciso mesclar com o commit feito direto na master. Podemos conferir o ponteiro usando *git hist*.
+
+* 9. Para fazer isso, usamos o comando ```$git push```.
+
+#### No fast-forward
+
+Essa técnica é utilizada quando estamos mesclando uma ramigicação e desejamos garantir que quando a branch for incorporada na master, isto esteja visível no histórico. Isto é utilizado quando desejamos manter alguma topologia de ramificação específica.
+Para isto, basta utilizarmos (não é usado na recursiva) a opção ```--no--ff``` durante o merge.
