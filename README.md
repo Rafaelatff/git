@@ -206,3 +206,20 @@ Neste momento, o git irá exibir o editor de texto padrão para que seja inserid
 
 Essa técnica é utilizada quando estamos mesclando uma ramigicação e desejamos garantir que quando a branch for incorporada na master, isto esteja visível no histórico. Isto é utilizado quando desejamos manter alguma topologia de ramificação específica.
 Para isto, basta utilizarmos (não é usado na recursiva) a opção ```--no--ff``` durante o merge.
+
+### DAG - Grafo Acíclico Dirigido
+
+A estrutura que representa o histórico linear ou bifurcado no Git pode ser definida como DAG (Directed Acyclic Graph ou Grafo Acíclico Dirigido).
+
+## Seção 6 - Trabalho colaborativo
+
+### Fetch
+
+Fetch fará o download do conteúdo remoto, mas não atualizará o  estado de funcionamento do seu repositório local, deixando intacto o trabalho atual.
+
+Usando checkout na branch de rastreamento é possível então visualizar os arquivos. Precisa então fazer o merge para puchar para a área de trabalho.
+
+### Pull
+Ele baixa as alterações do repositório remoto e mescla com a área de trabalho (fetch e merge juntos).
+
+## Seção 7 - Reescrevendo o histórico
