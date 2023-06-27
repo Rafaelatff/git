@@ -223,3 +223,29 @@ Usando checkout na branch de rastreamento é possível então visualizar os arqu
 Ele baixa as alterações do repositório remoto e mescla com a área de trabalho (fetch e merge juntos).
 
 ## Seção 7 - Reescrevendo o histórico
+
+### Rebase
+
+* ```$git checkout -b notificacoes```, cria e muda para branch notificacoes.
+* ```$touch notificacoes.txt``` gera arquivo txt.
+* ```$git add .``` adiciona arquivos para area de stage.
+* ```$git commit -m "adding notificacoes.txt``` commita o arquivo.
+* ```$git checkout master``` volta para branch master.
+* ```$echo "menu">menu.txt``` edita arquivo menu.
+* ```$git add menu.txt``` envia para area de stage.
+* ```$git commit -m "changes in menu"``` commita arquivo.
+* ```$git checkout notificacoes``` volta para branch recém criada.
+* ```$git rebase master``` neste momento, é como se o último commit fosse criado a partir do momento depois da modificação do arquivo menu, e não antes (como realmente aconteceu). Isso é feito para evitar um histórico cheio de bifurcações, ele fica mais linear.
+* Terminamos então com um ```$git checkout master``` para ir para a branch master e ```$git merge notificacoes``` para, em modo fast-foward concretizar esta mudança na master.
+
+Não recrie commits que existam fora do seu repositório e nos quais as pessoas possam ter trabalhado. O rebase recria commit então deve ser usado com cuidado.
+
+Push forçado ```$git push -f```.
+
+### Pull com rebase
+
+* Pode ser criado pull com rebase ```$git pull --rebase```.
+
+### Emendar commit
+
+Quando esquecemos de commitar algo e queremos unir um novo commit ao anterior. Para isto: ```$git commit --amend -m "Adding brindes.txt with content"```. No entanto é preciso ter certeza que ninguém gerou uma branch nova baseada no commit anterior ou mesmo modificou o commit anterior.
