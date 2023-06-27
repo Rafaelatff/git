@@ -438,3 +438,7 @@ E então é gerado um par de chaves (criptografia de chave assimétrica) para se
 
 Repositório Bare é gerado para ser o repositório de armazenamento, portanto não caracteriza como área de trabalho quando inicializamos com ```git init --bare```.
 Usado quando a empresa usa um servidor local, e não um bitbucket ou github.
+
+## Extra
+
+https://learngitbranching.js.org/?locale=pt_BR
