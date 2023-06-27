@@ -254,3 +254,155 @@ Quando esquecemos de commitar algo e queremos unir um novo commit ao anterior. P
 
 Junta diversos commits em um único. Basta usar ```$git merge --squash esquecisenha```, onde esquecisenha é o nome da branch. Termina com um ```$git commmit -m "message"```.
 
+
+## Seção 8: Outros conceitos e comandos
+
+### Stash
+
+No caso se eu trabalhar em brancha "nao master", e não comitar algo, ao eu dar um checkout e voltar para a branch master, eu acabo perdendo as coisas não commitadas em "nao master". 
+Para isto, eu preciso usar o comando stash para salvar minhas modificações locais em uma pilhar e limpar minha área de trabalho para o último commit feito.
+
+* ```git stash``` -> se não passar nada, ele executa um push junto por padrão. Por padrão ele não inclui arquivos untracked. Para salvar essas alterações precisa adicionar o comando *include untracked*.
+* ```git stash list``` -> ele mostra o estado da pilha.
+* ```git checkout banner``` -> agora é possível alternar para outra branch sem perder o trabalho não commitado.
+* ```git stash apply stash@{1}``` para aplicar alterações de uma entrada específica.
+* ```git stash pop``` -> remove o último, e do topo, item da pilha.
+* ```git stash clear``` para limpar a lista.
+
+### Blame
+
+Blame mostra quem fez alteração em determinado arquivo commitado.
+
+### Bisect 
+
+Para identificar versão do projeto que esteja sem bug. 
+
+### Pull Request
+
+Permite uma revisão das alterações antes de realizar o processo de mesclagem de uma branch para a outra.
+Ai você pode colocar outra pessoa para aprovar o *Merge pull request*. 
+
+### Cherry-pick
+
+Pode gerar commits duplicados no histórico, idealmente usar merge ou rebase para integrar os commits. Ele é usado para ajustar um commit em uma branch incorreta.
+Usado para criar *hotfixes de bugs*. Usado para restaurar commits perdidos. 
+
+### .gitignore
+
+Arquivo utilizado para identificar componentes não versionados.
+
+* ```arquivo*``` dentro do arquivo *.gitignore*, ignora todos os arquivos que começam com o nome *arquivo*.
+* ```$mkdir build``` usando a CLI para gerar um diretório dentro daquele local com nome *build*.
+* ```build/```dentro do arquivo *.gitignore*, ignora todo um diretório.
+* O .gitignore não ignora arquivos e diretórios que já fazem parte do repositório ou da área do staging.
+* ```$git restore --staged .``` remove todos os arquivos da area de staging.  
+* ```$git rm --cached <nome do arquivo> <diretorio/nome do arquivo>``` usado para remover arquivos já versionados. O comando **--cached**, garante que os arquivos permaneçam na area de trabalho, mas com status untracked. Se não fosse utilizado este comando *--cached**, ele teria deletado os arquivos e diretório.
+
+Curso recomenda este site, [toptal](https://www.toptal.com/developers/gitignore) para criar o arquivo .gitignore de acordo com o projeto. A seguir 2 exemplos:
+
+No Altium: 
+```
+# Created by https://www.toptal.com/developers/gitignore/api/altium
+# Edit at https://www.toptal.com/developers/gitignore?templates=altium
+
+### Altium ###
+# Previews Folders
+**/__Previews/
+
+# History Folders
+**/History/*
+
+# Project Logs
+Project\ Logs*/
+
+# Project Outputs
+Project\ Outputs*/
+
+# Auto-conversion notices
+*.PcbDoc.htm
+
+# Access lock file for dbLib sources
+**/*.ldb
+
+
+# End of https://www.toptal.com/developers/gitignore/api/altium
+```
+
+E no STM32CubeIDE (sad):
+```
+No results found
+```
+
+Encontrei recomendação em forum sobre usar o do *Eclipse*
+```
+# Created by https://www.toptal.com/developers/gitignore/api/eclipse
+# Edit at https://www.toptal.com/developers/gitignore?templates=eclipse
+
+### Eclipse ###
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# PyDev specific (Python IDE for Eclipse)
+*.pydevproject
+
+# CDT-specific (C/C++ Development Tooling)
+.cproject
+
+# CDT- autotools
+.autotools
+
+# Java annotation processor (APT)
+.factorypath
+
+# PDT-specific (PHP Development Tools)
+.buildpath
+
+# sbteclipse plugin
+.target
+
+# Tern plugin
+.tern-project
+
+# TeXlipse plugin
+.texlipse
+
+# STS (Spring Tool Suite)
+.springBeans
+
+# Code Recommenders
+.recommenders/
+
+# Annotation Processing
+.apt_generated/
+.apt_generated_test/
+
+# Scala IDE specific (Scala & Java development for Eclipse)
+.cache-main
+.scala_dependencies
+.worksheet
+
+# Uncomment this line if you wish to ignore the project description file.
+# Typically, this file would be tracked if it contains build/dependency configurations:
+#.project
+
+### Eclipse Patch ###
+# Spring Boot Tooling
+.sts4-cache/
+
+# End of https://www.toptal.com/developers/gitignore/api/eclipse
+```
