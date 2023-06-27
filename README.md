@@ -249,3 +249,8 @@ Push forçado ```$git push -f```.
 ### Emendar commit
 
 Quando esquecemos de commitar algo e queremos unir um novo commit ao anterior. Para isto: ```$git commit --amend -m "Adding brindes.txt with content"```. No entanto é preciso ter certeza que ninguém gerou uma branch nova baseada no commit anterior ou mesmo modificou o commit anterior.
+
+### Squash merge
+
+Junta diversos commits em um único. Basta usar ```$git merge --squash esquecisenha```, onde esquecisenha é o nome da branch. Termina com um ```$git commmit -m "message"```.
+
