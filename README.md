@@ -255,7 +255,7 @@ Quando esquecemos de commitar algo e queremos unir um novo commit ao anterior. P
 Junta diversos commits em um único. Basta usar ```$git merge --squash esquecisenha```, onde esquecisenha é o nome da branch. Termina com um ```$git commmit -m "message"```.
 
 
-## Seção 8: Outros conceitos e comandos
+## Seção 8 - Outros conceitos e comandos
 
 ### Stash
 
@@ -406,3 +406,35 @@ local.properties
 
 # End of https://www.toptal.com/developers/gitignore/api/eclipse
 ```
+
+### Diff
+
+* ```git diff``` compara a area de trabalho com a versão que a HEAD está apontando.
+* ```git diff <nome do arquivo>``` compara as diferenças de apenas aquele arquivo.
+* ```git diff head~..head``` compara penúltimo e último commit.
+* ```git diff head~2..head``` compara anti-penúltimo com penúltimo commit.
+
+### HTTPS x SSH
+
+**Hypertext Transfer Protocol Secure**
+Hypertext Transfer Protocol Secure (https) is a combination of the Hypertext Transfer Protocol (HTTP) with the Secure Socket Layer (SSL)/Transport Layer Security (TLS) protocol.
+
+**Secure Socket Shell**
+SSH, also known as Secure Shell or Secure Socket Shell, is a network protocol that gives users, particularly system administrators, a secure way to access a computer over an unsecured network.
+
+Platafomas de hospegagem GIT podem possuir repositórios públicos e privados, sendo necessário transferi-los de forma segura.
+HTTPS não exige muita configuração, apenas usuário e senha.
+SSH oferece mais segurança (> número de bits), sendo necessário gerar uma chave SSH localmente e cadastrá-la na plataforma de hospedagem.
+
+* Para gerar chave SSH usar comando ```ssh-keygen```. Funciona tanto no Git Bash quanto CMD.
+
+![image](https://github.com/Rafaelatff/git/assets/58916022/ae4c52b9-3f0f-4e6b-8595-0d4a7fc66654)
+
+E então é gerado um par de chaves (criptografia de chave assimétrica) para ser configurado no repositório git.
+
+![image](https://github.com/Rafaelatff/git/assets/58916022/b50b89a4-2ee5-4b62-a126-e4dc3c101694)
+
+### Bare
+
+Repositório Bare é gerado para ser o repositório de armazenamento, portanto não caracteriza como área de trabalho quando inicializamos com ```git init --bare```.
+Usado quando a empresa usa um servidor local, e não um bitbucket ou github.
